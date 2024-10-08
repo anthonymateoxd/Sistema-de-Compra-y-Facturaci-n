@@ -1,8 +1,12 @@
 from django.shortcuts import render
 from django.views import generic
+from django.urls import reverse_lazy
+
 from django.contrib.auth.mixins import LoginRequiredMixin
+
 from .models import Categoria
 from django.http import HttpResponse
+from .forms import CategoriaForm
 
 class CategoriaView(LoginRequiredMixin, generic.ListView):
     model = Categoria
@@ -12,3 +16,16 @@ class CategoriaView(LoginRequiredMixin, generic.ListView):
 
 def Home(request):
     return HttpResponse("¡Hola desde la aplicación inv!")
+
+class CategoriaNew(LoginRequiredMixin, generic.CreateView):
+    model=Categoria
+    template_name="inv/categoria_form.html"
+    context_object_name = "obj"
+    form_class=CategoriaForm
+    success_url=reverse_lazy("inv:categoria_list")
+    login_url="base:login"
+
+    def form_valid(self, form):
+        form.instance.uc = self.request.user
+        return super().form_valid(form)
+
