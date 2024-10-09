@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views import generic
 from django.urls import reverse_lazy
 
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Categoria
@@ -23,7 +24,7 @@ class CategoriaNew(LoginRequiredMixin, generic.CreateView):
     context_object_name = "obj"
     form_class=CategoriaForm
     success_url=reverse_lazy("inv:categoria_list")
-    login_url="base:login"
+    login_url="bases:login"
 
     def form_valid(self, form):
         form.instance.uc = self.request.user
