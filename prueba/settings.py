@@ -57,7 +57,7 @@ ROOT_URLCONF = 'prueba.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'Base'],  # Asegúrate de que esta línea apunte a la carpeta donde está blank.html
+        'DIRS': [BASE_DIR / 'templates'],  # Aquí puedes indicar el directorio de tus plantillas
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
