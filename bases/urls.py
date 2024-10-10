@@ -1,8 +1,6 @@
 from django.urls import path
-from .views import SomeView  # Importa la vista que necesitas
+from bases.views import Home
 
 urlpatterns = [
-     path('', SomeView.as_view(), name='some_view'),
-    path('',include(('bases.urls','bases'), namespace='bases')),
-    path('admin/', admin.site.urls)
-]
+    path('',Home.as_view(), name='home'),
+]   
