@@ -80,12 +80,13 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'postgres',
-        'HOST': 'localhost',
         'USER': 'postgres',
-        'PASWORD': '123456',
-        'PORT': 5433
+        'PASSWORD': '123456',
+        'HOST': 'localhost',
+        'PORT': '5433',     
     }
 }
+
 
 
 # Password validation
@@ -118,10 +119,6 @@ USE_I18N = True
 
 USE_TZ = True
 
+STATIC_URL = '\Base\vendor\fontawesome-free'
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.1/howto/static-files/
-
-STATIC_URL = 'Base/'
-
-STATICFILES_DIRS = (os.path.join(BASE_DIR,'Base'),)
+STATICFILES_DIRS = (os.path.join(BASE_DIR,'\Base\vendor\fontawesome-free'),)
