@@ -15,8 +15,6 @@ class CategoriaView(LoginRequiredMixin, generic.ListView):
     context_object_name = "obj"
     login_url = 'bases:login'
 
-def Home(request):
-    return HttpResponse("¡Hola desde la aplicación inv!")
 
 class CategoriaNew(LoginRequiredMixin, generic.CreateView):
     model=Categoria
