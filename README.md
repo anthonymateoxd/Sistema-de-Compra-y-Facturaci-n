@@ -12,7 +12,7 @@ Este proyecto es un **sistema de compra y facturación** desarrollado utilizando
 - **Frontend**: HTML, CSS, JavaScript
 - **Entorno de desarrollo**: VS Code
 
-## Recuerden que ya nos queda menos de dos semanas
+## Recuerden que ya nos queda menos de dos semanas, y aparte tenemos otros proyectos
 
 ## Instrucciones de Instalación
 
