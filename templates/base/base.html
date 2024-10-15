@@ -21,7 +21,7 @@
 
 </head>
 
-<body id="page-top">
+<body id="page-top" class="bg-gradient-primary">
 {% block side_bar %}
   <!-- Page Wrapper -->
   <div id="wrapper">
@@ -104,7 +104,7 @@
         <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Login Screens:</h6>
-            <a class="collapse-item" href="{% static 'login.html' %}">Login</a>
+            <a class="collapse-item" href="/templates/base/base.html">Login</a>
             <a class="collapse-item" href="{% static 'register.html' %}">Register</a>
             <a class="collapse-item" href="{% static 'forgot-password.html' %}">Forgot Password</a>
             <div class="collapse-divider"></div>
@@ -382,7 +382,7 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="{% static 'login.html' %}">Logout</a>
+          <a class="btn btn-primary" href="/templates/base/base.html">Logout</a>
         </div>
       </div>
     </div>
