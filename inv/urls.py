@@ -1,6 +1,6 @@
 from django.urls import include, path 
 
-from .views import CategoriaView, CategoriaNew
+from .views import CategoriaView
 
 
 urlpatterns = [
