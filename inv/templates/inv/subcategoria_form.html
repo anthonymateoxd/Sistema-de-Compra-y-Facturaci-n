@@ -3,7 +3,7 @@
 {% block page_content %}
 <form method="POST" class="form-inline">
     {% csrf_token %}
-    <div class="col-xl-6 col-md-6 mb-6">
+    <div class="col-xl-12 col-md-12 mb-12">
         {% if obj %}
         <div class="card border-left-warning shadow h-100 py-2">
         {% else %}
@@ -21,7 +21,7 @@
                             <div class="input-group">
                                <!---- <input type="text" name="description" maxlength="100" class="form-control" required id="id_description" placeholder="Descripcion"
                                 value="{% if obj %} {{ obj.description }} {% endif %}"> -->
-                                {{ form.categoria}}
+                                {{ form.categoria }}
                             </div>
                         </div>
 
@@ -38,7 +38,7 @@
                                 <input type="checkbox" name="estado" class="form-control" id="id_estado"
                                 {% if obj.estado %} checked {% endif %} > -->
 
-                                {{form.estado}}
+                                {{ form.estado }}
                             </div>
                         </div> 
                         <!-- {{ form.as_p }} -->
