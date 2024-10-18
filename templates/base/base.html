@@ -71,6 +71,12 @@
             <h6 class="collapse-header">Catalogos de inventario:</h6>
             <a class="collapse-item" href="{% url 'inv:categoria_list' %}">Categorias</a>
             <a class="collapse-item" href="{% url 'inv:subcategoria_list' %}"> Sub Categorias</a>
+            <a class="collapse-item" href="{% url 'inv:marca_list' %}">Marca</a>
+            <a class="collapse-item" href="{% url 'inv:um_list' %}">Unidad Medida</a>
+            <a class="collapse-item" href="{% url 'inv:producto_list' %}">Producto</a>
+
+            <h6 class="collapse-header">Catálogos de Compras:</h6>
+            <a class="collapse-item" href="{% url 'cmp:proveedor_list' %}">Proveedores</a>
           </div>
         </div>
       </li>
@@ -306,7 +312,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"> {{ user.username }}</span>
                 <img class="img-profile rounded-circle" src="https://img.icons8.com/?size=100&id=119289&format=png&color=000000">
               </a>
               <!-- Dropdown - User Information -->
@@ -399,6 +405,8 @@
     </div>
   </div>
 
+  <div class="modal fade" id="popup"></div>
+
   <!-- Bootstrap core JavaScript-->
   <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
   <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
@@ -413,6 +421,31 @@
   <script src="{% static 'vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
 
   {% block js_page %}  {% endblock %}
+
+  {% block control_modal%}
+  <script>
+    function abrir_modal(url)
+    {
+
+      $("#popup").load(url, function(){
+        $(this).modal({
+          backdrop:'static',
+          keyboard: false
+        })
+        $(this).modal('show');
+      });
+      return false;
+    }
+
+    function cerrar_modal()
+    {
+      $('#popup').modal('hide');
+      return false;
+    }
+
+  </script>
+
+  {%endblock%}
 </body>
 
 </html>
