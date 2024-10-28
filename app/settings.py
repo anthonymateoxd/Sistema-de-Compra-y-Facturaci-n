@@ -10,8 +10,13 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
+
+from decouple import config
+
 from pathlib import Path
 import os  # Importar el módulo os
+
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,12 +26,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-!t@rg2ax^947u$#z_e#66y^(9gyp_g4u0e2rbb0qztfblhco-4'
+# SECRET_KEY = 'django-insecure-!t@rg2ax^947u$#z_e#66y^(9gyp_g4u0e2rbb0qztfblhco-4'
+
+SECRET_KEY=config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1:8000","herokuapp.com"]
 
 # Application definition
 
@@ -54,6 +61,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_userforeignkey.middleware.UserForeignKeyMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'app.urls'
@@ -125,8 +133,17 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
+STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
 STATICFILES_DIRS = (os.path.join(BASE_DIR,'static'),)
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/login/'
 
+
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
